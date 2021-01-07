@@ -1,3 +1,16 @@
+---
+title: "a test post with md output"
+author: "Frie"
+date: "1/7/2021"
+output: 
+  md_document:
+    preserve_yaml: true
+toc: true
+layout: post
+description: A minimal example of using markdown with fastpages.
+categories: [markdown]
+---
+
 
 
 ## R Markdown
