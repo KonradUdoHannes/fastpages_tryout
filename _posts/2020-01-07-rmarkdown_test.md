@@ -24,7 +24,7 @@ chunks within the document. You can embed an R code chunk like this:
 
 You can also embed plots, for example:
 
-![](2020-01-06_rmarkdown_test_files/figure-markdown_strict/pressure-1.png)
+![](2020-01-07-rmarkdown_test_files/figure-markdown_strict/pressure-1.png)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to
 prevent printing of the R code that generated the plot.
@@ -33,4 +33,4 @@ prevent printing of the R code that generated the plot.
     leaflet::leaflet() %>% 
       leaflet::addTiles()
 
-![](2020-01-06_rmarkdown_test_files/figure-markdown_strict/unnamed-chunk-1-1.png)
+![](2020-01-07-rmarkdown_test_files/figure-markdown_strict/unnamed-chunk-1-1.png)

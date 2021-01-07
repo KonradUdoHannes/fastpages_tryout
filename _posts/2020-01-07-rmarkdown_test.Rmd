@@ -1,8 +1,8 @@
 ---
-title: "a test post"
+title: "a test post with md output"
 author: "Frie"
 date: "1/7/2021"
-output: html_document
+output: md_document
 toc: true
 layout: post
 description: A minimal example of using markdown with fastpages.
