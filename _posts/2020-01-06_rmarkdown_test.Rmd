@@ -3,6 +3,10 @@ title: "a test post"
 author: "Frie"
 date: "1/7/2021"
 output: md_document
+toc: true
+layout: post
+description: A minimal example of using markdown with fastpages.
+categories: [markdown]
 ---
 
 ```{r setup, include=FALSE}
