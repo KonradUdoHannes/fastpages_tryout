@@ -4,20 +4,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>a test post with html output format | fastpages_tryout</title>
+<title>a test post with md output | fastpages_tryout</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="a test post with html output format" />
+<meta property="og:title" content="a test post with md output" />
 <meta name="author" content="Frie" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="A minimal example of using markdown with fastpages." />
 <meta property="og:description" content="A minimal example of using markdown with fastpages." />
-<link rel="canonical" href="https://konradudohannes.github.io/fastpages_tryout/markdown/2021/07/01/rmarkdown_test_html.Rmd" />
-<meta property="og:url" content="https://konradudohannes.github.io/fastpages_tryout/markdown/2021/07/01/rmarkdown_test_html.Rmd" />
+<link rel="canonical" href="https://konradudohannes.github.io/fastpages_tryout/markdown/2021/07/01/rmarkdown_test.html" />
+<meta property="og:url" content="https://konradudohannes.github.io/fastpages_tryout/markdown/2021/07/01/rmarkdown_test.html" />
 <meta property="og:site_name" content="fastpages_tryout" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-07-01T00:00:00-05:00" />
 <script type="application/ld+json">
-{"url":"https://konradudohannes.github.io/fastpages_tryout/markdown/2021/07/01/rmarkdown_test_html.Rmd","@type":"BlogPosting","headline":"a test post with html output format","dateModified":"2021-07-01T00:00:00-05:00","datePublished":"2021-07-01T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://konradudohannes.github.io/fastpages_tryout/markdown/2021/07/01/rmarkdown_test_html.Rmd"},"author":{"@type":"Person","name":"Frie"},"description":"A minimal example of using markdown with fastpages.","@context":"https://schema.org"}</script>
+{"description":"A minimal example of using markdown with fastpages.","url":"https://konradudohannes.github.io/fastpages_tryout/markdown/2021/07/01/rmarkdown_test.html","@type":"BlogPosting","headline":"a test post with md output","dateModified":"2021-07-01T00:00:00-05:00","datePublished":"2021-07-01T00:00:00-05:00","author":{"@type":"Person","name":"Frie"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://konradudohannes.github.io/fastpages_tryout/markdown/2021/07/01/rmarkdown_test.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/fastpages_tryout/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://konradudohannes.github.io/fastpages_tryout/feed.xml" title="fastpages_tryout" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages_tryout/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -88,7 +88,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">a test post with html output format</h1><p class="page-description">A minimal example of using markdown with fastpages.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-07-01T00:00:00-05:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">a test post with md output</h1><p class="page-description">A minimal example of using markdown with fastpages.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-07-01T00:00:00-05:00" itemprop="datePublished">
         Jul 1, 2021
       </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -113,38 +113,48 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
-</ul>```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+<li class="toc-entry toc-h2"><a href="#r-markdown">R Markdown</a></li>
+<li class="toc-entry toc-h2"><a href="#including-plots">Including Plots</a></li>
+</ul><h2 id="r-markdown">
+<a class="anchor" href="#r-markdown" aria-hidden="true"><span class="octicon octicon-link"></span></a>R Markdown</h2>
 
-## R Markdown
+<p>This is an R Markdown document. Markdown is a simple formatting syntax
+for authoring HTML, PDF, and MS Word documents. For more details on
+using R Markdown see <a href="http://rmarkdown.rstudio.com">http://rmarkdown.rstudio.com</a>.</p>
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http:>.
+<p>When you click the <strong>Knit</strong> button a document will be generated that
+includes both content as well as the output of any embedded R code
+chunks within the document. You can embed an R code chunk like this:</p>
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>summary(cars)
 
-```{r cars}
-summary(cars)
-```
+##      speed           dist       
+##  Min.   : 4.0   Min.   :  2.00  
+##  1st Qu.:12.0   1st Qu.: 26.00  
+##  Median :15.0   Median : 36.00  
+##  Mean   :15.4   Mean   : 42.98  
+##  3rd Qu.:19.0   3rd Qu.: 56.00  
+##  Max.   :25.0   Max.   :120.00
+</code></pre></div></div>
 
-## Including Plots
+<h2 id="including-plots">
+<a class="anchor" href="#including-plots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Including Plots</h2>
 
-You can also embed plots, for example:
+<p>You can also embed plots, for example:</p>
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+<p><img src="2020-01-07-rmarkdown_test_files/figure-markdown_strict/pressure-1.png" alt=""></p>
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+<p>Note that the <code class="language-plaintext highlighter-rouge">echo = FALSE</code> parameter was added to the code chunk to
+prevent printing of the R code that generated the plot.</p>
 
-```{r}
-library(leaflet)
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>library(leaflet)
 leaflet::leaflet() %&gt;% 
   leaflet::addTiles()
-```
+</code></pre></div></div>
 
-</http:>
-  </div><a class="u-url" href="/fastpages_tryout/markdown/2021/07/01/rmarkdown_test_html.Rmd" hidden></a>
+<p><img src="2020-01-07-rmarkdown_test_files/figure-markdown_strict/unnamed-chunk-1-1.png" alt=""></p>
+
+  </div><a class="u-url" href="/fastpages_tryout/markdown/2021/07/01/rmarkdown_test.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">

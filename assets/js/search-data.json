@@ -2,10 +2,10 @@
   
     
         "post0": {
-            "title": "a test post with html output format",
-            "content": "{r setup, include=FALSE} knitr::opts_chunk$set(echo = TRUE) . ## R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;http://rmarkdown.rstudio.com&gt;. When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this: {r cars} summary(cars) . Including Plots . You can also embed plots, for example: . {r pressure, echo=FALSE} plot(pressure) . Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot. {r} library(leaflet) leaflet::leaflet() %&gt;% leaflet::addTiles() .",
-            "url": "https://konradudohannes.github.io/fastpages_tryout/markdown/2021/07/01/rmarkdown_test_html.Rmd",
-            "relUrl": "/markdown/2021/07/01/rmarkdown_test_html.Rmd",
+            "title": "a test post with md output",
+            "content": "R Markdown . This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com. . When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this: . summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.:19.0 3rd Qu.: 56.00 ## Max. :25.0 Max. :120.00 . Including Plots . You can also embed plots, for example: . . Note that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot. . library(leaflet) leaflet::leaflet() %&gt;% leaflet::addTiles() . .",
+            "url": "https://konradudohannes.github.io/fastpages_tryout/markdown/2021/07/01/rmarkdown_test.html",
+            "relUrl": "/markdown/2021/07/01/rmarkdown_test.html",
             "date": " • Jul 1, 2021"
         }
         
@@ -51,17 +51,6 @@
             "url": "https://konradudohannes.github.io/fastpages_tryout/markdown/2020/01/14/test-markdown-post.html",
             "relUrl": "/markdown/2020/01/14/test-markdown-post.html",
             "date": " • Jan 14, 2020"
-        }
-        
-    
-  
-    
-        ,"post5": {
-            "title": "Rmarkdown_test",
-            "content": "R Markdown . This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com. . When you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this: . summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.:19.0 3rd Qu.: 56.00 ## Max. :25.0 Max. :120.00 . Including Plots . You can also embed plots, for example: . . Note that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot. . library(leaflet) leaflet::leaflet() %&gt;% leaflet::addTiles() . .",
-            "url": "https://konradudohannes.github.io/fastpages_tryout/2020/01/07/rmarkdown_test.html",
-            "relUrl": "/2020/01/07/rmarkdown_test.html",
-            "date": " • Jan 7, 2020"
         }
         
     
