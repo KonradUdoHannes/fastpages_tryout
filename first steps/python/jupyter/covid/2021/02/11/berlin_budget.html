@@ -175,18 +175,6 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p></p>
-<div class="flash flash-warn">
-    <svg class="octicon octicon-zap octicon octicon-zap" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M10.561 1.5a.016.016 0 00-.01.004L3.286 8.571A.25.25 0 003.462 9H6.75a.75.75 0 01.694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0012.538 7H9.25a.75.75 0 01-.683-1.06l2.008-4.418.003-.006a.02.02 0 00-.004-.009.02.02 0 00-.006-.006L10.56 1.5zM9.504.43a1.516 1.516 0 012.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.25 1.25 0 01-.871.354h-.302a1.25 1.25 0 01-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429z"></path></svg>
-    <strong>Important: </strong>Pay attention! It’s important.
-</div>Warning, Tip, Note
-
-</div>
-</div>
-</div>
     
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -781,7 +769,8 @@ dtype: int64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-output</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
     <span class="p">[</span>
      <span class="n">berlin_budget_raw</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">'dtypes'</span><span class="p">),</span>
      <span class="n">berlin_budget_raw</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">'missing'</span><span class="p">),</span>
@@ -1057,49 +1046,49 @@ dtype: int64</pre>
   </thead>
   <tbody>
     <tr>
-      <th>12367</th>
-      <td>Ausgabetitel</td>
-      <td>Bezirke</td>
-      <td>Gesundheit, Umwelt, Sport und Erholung</td>
-      <td>Sächliche Verwaltungsausgaben, militärische Be...</td>
-      <td>Spandau</td>
-      <td>4000.0</td>
-    </tr>
-    <tr>
-      <th>20491</th>
-      <td>Ausgabetitel</td>
+      <th>8616</th>
+      <td>Einnahmetitel</td>
       <td>Bezirke</td>
       <td>Soziale Sicherung, Familie und Jugend, Arbeits...</td>
-      <td>Ausgaben für Zuweisungen und Zuschüsse mit Aus...</td>
-      <td>Reinickendorf</td>
-      <td>20000.0</td>
+      <td>Einnahmen aus Zuweisungen und Zuschüssen mit A...</td>
+      <td>Friedrichshain-Kreuzberg</td>
+      <td>1000.0</td>
     </tr>
     <tr>
-      <th>10914</th>
-      <td>Ausgabetitel</td>
+      <th>9789</th>
+      <td>Einnahmetitel</td>
       <td>Bezirke</td>
       <td>Soziale Sicherung, Familie und Jugend, Arbeits...</td>
-      <td>Ausgaben für Zuweisungen und Zuschüsse mit Aus...</td>
-      <td>Charlottenburg-Wilmersdorf</td>
-      <td>1050000.0</td>
+      <td>Einnahmen aus Zuweisungen und Zuschüssen mit A...</td>
+      <td>Pankow</td>
+      <td>1000.0</td>
     </tr>
     <tr>
-      <th>19264</th>
+      <th>19183</th>
       <td>Ausgabetitel</td>
       <td>Bezirke</td>
       <td>Soziale Sicherung, Familie und Jugend, Arbeits...</td>
       <td>Ausgaben für Zuweisungen und Zuschüsse mit Aus...</td>
       <td>Lichtenberg</td>
-      <td>6900000.0</td>
+      <td>1000.0</td>
     </tr>
     <tr>
-      <th>8311</th>
+      <th>1344</th>
       <td>Ausgabetitel</td>
-      <td>Bezirke</td>
+      <td>Senatsverwaltungen</td>
       <td>Soziale Sicherung, Familie und Jugend, Arbeits...</td>
       <td>Ausgaben für Zuweisungen und Zuschüsse mit Aus...</td>
+      <td>Hauptverwaltung</td>
+      <td>490000.0</td>
+    </tr>
+    <tr>
+      <th>8132</th>
+      <td>Ausgabetitel</td>
+      <td>Bezirke</td>
+      <td>Bildungswesen, Wissenschaft, Forschung, kultur...</td>
+      <td>Personalausgaben</td>
       <td>Friedrichshain-Kreuzberg</td>
-      <td>25351000.0</td>
+      <td>182000.0</td>
     </tr>
   </tbody>
 </table>
@@ -1320,8 +1309,6 @@ Name: Ansatz 2018 in €, dtype: float64</pre>
 <li>Sorting the values before plotting them, which makes everything easier to compare.</li>
 </ol>
 <p>In our example we get<sup id="fnref-1" class="footnote-ref"><a href="#fn-1">1</a></sup>:</p>
-<p></p>
-<div class="footnotes"><p id="fn-1">1. We also used a matplotlib style for prettier output inside the post.<a href="#fnref-1" class="footnote footnotes">↩</a></p></div>
 
 </div>
 </div>
@@ -1333,7 +1320,13 @@ Name: Ansatz 2018 in €, dtype: float64</pre>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">berlin_budget</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'Titelart == "Ausgabetitel"'</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Hauptfunktionsbezeichnung'</span><span class="p">)[</span><span class="s1">'Ansatz 2018 in €'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span>
+    <span class="n">berlin_budget</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">'Titelart == "Ausgabetitel"'</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Hauptfunktionsbezeichnung'</span><span class="p">)[</span><span class="s1">'Ansatz 2018 in €'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
+<span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1348,7 +1341,7 @@ Name: Ansatz 2018 in €, dtype: float64</pre>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fab94261850&gt;</pre>
+<pre>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fd9d00d7890&gt;</pre>
 </div>
 
 </div>
@@ -1369,6 +1362,15 @@ Name: Ansatz 2018 in €, dtype: float64</pre>
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p></p>
+<div class="footnotes"><p id="fn-1">1. We also used a matplotlib style for prettier output inside the post.<a href="#fnref-1" class="footnote footnotes">↩</a></p></div>
+
+</div>
+</div>
+</div>
 </div>
 
 
