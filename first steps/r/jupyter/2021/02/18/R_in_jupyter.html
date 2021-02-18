@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>R in jupyter notebooks | fastpages_tryout</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="R in jupyter notebooks" />
+<meta name="author" content="Konrad Wölms" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Exploit R’s notebook support for blogposts" />
+<meta property="og:description" content="Exploit R’s notebook support for blogposts" />
+<link rel="canonical" href="https://konradudohannes.github.io/fastpages_tryout/first%20steps/r/jupyter/2021/02/18/R_in_jupyter.html" />
+<meta property="og:url" content="https://konradudohannes.github.io/fastpages_tryout/first%20steps/r/jupyter/2021/02/18/R_in_jupyter.html" />
+<meta property="og:site_name" content="fastpages_tryout" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-02-18T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"Exploit R’s notebook support for blogposts","url":"https://konradudohannes.github.io/fastpages_tryout/first%20steps/r/jupyter/2021/02/18/R_in_jupyter.html","@type":"BlogPosting","headline":"R in jupyter notebooks","dateModified":"2021-02-18T00:00:00-06:00","datePublished":"2021-02-18T00:00:00-06:00","author":{"@type":"Person","name":"Konrad Wölms"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://konradudohannes.github.io/fastpages_tryout/first%20steps/r/jupyter/2021/02/18/R_in_jupyter.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/fastpages_tryout/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://konradudohannes.github.io/fastpages_tryout/feed.xml" title="fastpages_tryout" /><link rel="shortcut icon" type="image/x-icon" href="/fastpages_tryout/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/fastpages_tryout/">fastpages_tryout</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/fastpages_tryout/about/">About Me</a><a class="page-link" href="/fastpages_tryout/search/">Search</a><a class="page-link" href="/fastpages_tryout/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">R in jupyter notebooks</h1><p class="page-description">Exploit R's notebook support for blogposts</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-02-18T00:00:00-06:00" itemprop="datePublished">
+        Feb 18, 2021
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">Konrad Wölms</span></span>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/fastpages_tryout/categories/#first steps">first steps</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages_tryout/categories/#R">R</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/fastpages_tryout/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/KonradUdoHannes/fastpages_tryout/tree/master/_notebooks/2021-02-18-R_in_jupyter.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/fastpages_tryout/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/KonradUdoHannes/fastpages_tryout/master?filepath=_notebooks%2F2021-02-18-R_in_jupyter.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/fastpages_tryout/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/KonradUdoHannes/fastpages_tryout/blob/master/_notebooks/2021-02-18-R_in_jupyter.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/fastpages_tryout/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Jupyter's-intentions">Jupyter&#39;s intentions </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-02-18-R_in_jupyter.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Jupyter's-intentions">
+<a class="anchor" href="#Jupyter's-intentions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Jupyter's intentions<a class="anchor-link" href="#Jupyter's-intentions"> </a>
+</h2>
+<p>Jupyter was orignally designed as an interactive environment for Julia, Python and R. This is even reflected in the name <strong>Ju</strong>lia<strong>pyt</strong>hon<strong>R</strong>, even if they snug an <em>e</em> in there. In the python data science community jupyter is widely used, while the R community uses Rstudio as the standard IDE and it is what most newcomers to R are introduced to initially.</p>
+<p>Here we'll give an example of how to use jupyter as an alternative to Rstudio. This should not be misunderstood. Rstudio is a great tool and we don't want to downplay its importance. The main advantage of using jupyter is access to a set of tools that are specifically build for jupyter notebooks. Many of these tools were developed with python in mind, but the multi language usability of jupyter allows us to make use of them in R. This post is an example in the sense, that it was written for fastPages, a notebook blogging framework.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="n">mtcars</span> <span class="o">%&gt;%</span>
+    <span class="nf">arrange</span><span class="p">(</span><span class="s">'cyl'</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">cyl</span><span class="p">))</span> <span class="o">+</span>
+    <span class="nf">geom_point</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0gAAANICAMAAADKOT/pAAAC+lBMVEUAAAABAQECAgIDAwME%0ABAQFBQUGBgYHBwcICAgJCQkKCgoLCwsMDAwNDQ0ODg4PDw8QEBARERETExMUFBQVFRUWFhYX%0AFxcYGBgZGRkaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIjIyMkJCQlJSUmJiYnJycoKCgp%0AKSkqKiorKyssLCwtLS0uLi4vLy8wMDAxMTEyMjIzMzM0NDQ1NTU2NjY3Nzc4ODg5OTk6Ojo7%0AOzs8PDw9PT0+Pj4/Pz9AQEBBQUFCQkJDQ0NERERFRUVGRkZHR0dISEhJSUlKSkpLS0tMTExN%0ATU1OTk5PT09QUFBRUVFSUlJTU1NUVFRVVVVWVlZXV1dYWFhZWVlaWlpbW1tcXFxdXV1eXl5f%0AX19gYGBhYWFiYmJjY2NkZGRlZWVmZmZnZ2doaGhpaWlqampra2tsbGxtbW1ubm5vb29wcHBx%0AcXFycnJzc3N0dHR1dXV2dnZ3d3d4eHh5eXl6enp7e3t8fHx9fX1+fn5/f3+AgICBgYGCgoKD%0Ag4OEhISFhYWGhoaHh4eIiIiJiYmKioqLi4uMjIyNjY2Ojo6Pj4+QkJCRkZGSkpKTk5OUlJSV%0AlZWWlpaXl5eYmJiZmZmampqbm5ucnJydnZ2enp6fn5+goKChoaGioqKjo6OkpKSlpaWmpqan%0Ap6eoqKipqamqqqqrq6usrKytra2urq6vr6+xsbGysrKzs7O0tLS1tbW2tra3t7e4uLi5ubm6%0Aurq7u7u8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXGxsbHx8fIyMjJycnKysrLy8vM%0AzMzNzc3Ozs7Pz8/Q0NDR0dHS0tLT09PU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e%0A3t7f39/g4ODh4eHi4uLj4+Pk5OTl5eXm5ubn5+fo6Ojp6enq6urr6+vs7Ozt7e3u7u7v7+/w%0A8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7///9q0Rb6AAAA%0ACXBIWXMAABJ0AAASdAHeZh94AAAgAElEQVR4nO3de5yVdYHH8QNuCoqp5dqm5npplbxVo93L%0AzLLdagAlTUhQSzRdMy0veVvDTRdN08RLaq4ZaC14IREvhBaShqghKoqGYoIKkwMMc58553m9%0A9jzPc2aGge+cme/hp+c48/n8ceb3PPOc3/zO0/P2XGbSTEREm1ym3Asg6g8BiShAQCIKEJCI%0AAgQkogABiShAQCIKEJCIAuRCqqtVrck2yf0l1RZuqqbs2mBzrWsMNlVttiXcXC1rgk1Vn10X%0AbK61zcGmqm0LeUnoK7iU6rINtSVDWlOjqo2a5f6SyoabqilaHWyuusZgU9VEreHmansr2FT1%0AUV2wuVa3BJuqpj3gJdGsr+BSWhs11ADJDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKS%0ADkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKS%0ADkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKS%0ADkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQAKSDkhWQOpebtqJo8dfvsqAtPCKm17dpPX1%0AcNZevGfuGz3facWc+17pGL8xd+ZLyWDlwj+9mL+94+KH0288OeOvhTXOeGKD+y+555E3e5j6%0AtdkPxA+oL5A6f0DaszPmr5LHAcmqP0C647DZry86+Qd9h3RIJpPZ7LxNWZ88aytP3TyT+fCs%0Anu4z5QOZzLBL0vG9u2cym5+Wv4Ln7ptfy3G/G5a/3fX5mppnDs4Pvr6kpuZvI/KDLyxc7+5v%0AnvSeTGavB+XUN74vk9n2qr5ASn7A15Z0bP79qPzmgfPVkUCy6g+QLjovf3NvdWtfIR2TiRt0%0AxyasT561nyTzvv85fZe5Q5Jv3xKPn31fMr6o5uUPJYPNkts9alZ+Ohl8taamOhkcsN7z27nJ%0Anh1eEFPft0Xyvem9Q1r5meTIQzu2xyWbw5eLQ4Fk1R8g3f2t56Pacy6Mhytn51tep6qPWguj%0A9LLL7CcP61s5tfP96bwX6rscm363Kh5fkI63r7sms35PzC4MHl9UGNzTefc126R7LhFTH55+%0A6+C6xpZe1v2Hwrzz081lg9PNKeLQqL2XuYza1wWbqjlqDDZXfVuwqeqy8pIordaGYFM1Rs1r%0A+wwpmj5qVPWFTfHooap883s5fFB69Xygt2nN6gsX6QT97a8U8MTjCYVDG87vBmnKbYXBzDmF%0Awa867/5WYc8pYupPpN/ao/c13t4BNN18qrD5M/ex0run9s5Rb5Dmjblv2ROnTMzlh6/+Ot/L%0A9arGqK0wek969QyXh/WtnNi3rvCcca6+y9j0u/vH43PS8bbrruoG6dH7OgYdV/jdnXdfs1W6%0AZ6KY+hvptz5f39zay7rvL8z753RzaWHzFnFo1N7LXEbZhmBTtUTNweZqDPgQc+qSKLG2pmBT%0ANUUt6/oM6bib8jcvVD/fsd3be6Svp1fPDZvw0lO+ID4tmXbYk/ous9KfelU8fmJYMv5hzQvb%0AJ4P0Fda/1Ly+TzL45KqaLySDPVd03f/kZM82C8XU09Kp/7f390iFH/CJjg/q0rdiO78iDuU9%0AklV/eI809ub8zZLqZ/sKaeXe+Ytn0LGbsj551l4/Ij/v9rf1dJ8r83o2PzUdT43fT33r9Zqa%0A3++UH/z7lfGT5HYLamr+Ei+tKo/lmfjl2vB56919xWH5PTtMk1P/dGgms8U5ffnU7i+xpKrO%0AD8BfPCi/udtsdSSQrPoDpMlHzFmx6LTjm/sKqaZmxolnL9ik9fVw1h69YZr6h3uhJVNv7ryC%0AX552w2PJ4LVZt/25pmbZRcf9Mtl8c+Z19yVPF6seuO6eDX4nNe+G6ct6mHrxb255pqZPv0fq%0A/AGF5lx/9wp5IJCs+gOk5lsnjB4/6fXObf6yIURAsuoPkDYMSCECkhWQSgpIVkCyAlIpAckK%0ASFZAKikgWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQGpePV1qvqoVe4v%0AqVy4qVqihmBzNbUEm6ouag83V/u6YFM1R43B5mpoCzZVXTbgJdEa7opojJrXlgypUdYUtetv%0AlFIu3FRtUXOwuVragk3VGGXDzZVtCjZVa9QSbK7mkFdEwEuiPeAVEbXWlwyJl3Yh4qWdVX98%0AaQekEAHJCkglBSQrIFkBqZSAZAUkKyCVFJCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQk%0AHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQk%0AHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQk%0AHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQk%0AHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQk%0AHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQk%0AHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQk%0AHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQk%0AHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQkHZCsgAQk%0AHZCsgAQkHZCsgNS906vjRjQCCUhWQOre8qX5TpjIMxKQvIC0cS9VLwASkLyAtHG/OD4Xf6lb%0AnG/latXaqEXuL6lsuKmao7pgczU0B5tqddQWbq72tcGmaowags1V1xpsqtXZXLi5WtYFm6o+%0Aaqp1IK0bfUfy9aGqfPP7AI9ogNTeOeoDpLsPX5N8XXp1vr81qpqidrm/pHLhpmqLmoPN1dIW%0AbKrGKBturmxTsKlao5ZgczWHvCICXhLtAa+IqLXegJQ74Yr1tniPFCLeI1n1j/dIT1YvBlIN%0AkMyAtGH//f31t4AUIiBZ9QtIq0bOAlIckKyAVDwghQhIVkAqKSBZAckKSKUEJCsgWQGppIBk%0ABSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBk%0ABSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBk%0ABSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBk%0ABSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBk%0ABSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBk%0ABSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBk%0ABSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBk%0ABSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBk%0ABSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBSQg6YBkBaTi1a1WrY1a5P6SyoabqrmH%0A9ZZSQ3OwqVZHbeHmalsbbKrGqCHYXHWtwaZanc2Fm6tlXbCp6qOm2pIhNctaonb9jVLKhZuq%0APWoJNldrwIcYZcPNlQ33ENui1mBztQR8iLmQl0S4h9gatTWVDImXdiHipZ1Vf3xpB6QQAckK%0ASCUFJCsgWQGplIBkBSQrIJUUkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQd%0AkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQd%0AkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQd%0AkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQd%0AkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQd%0AkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQd%0AkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQd%0AkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQd%0AkKyABCQdkKyABCQdkKwGLKRbugWkjQKS1YCFlOkWkDYKSFYDFtLsbgFpo4BkNWAh9TEghQhI%0AVu86SK8BqeeAZDWgIW32jd+3A6mHgGQ1oCGNG5rZ6b9eBZIMSFYDGlK0evJ+mcH/cXfbersa%0AbjzusO/+H5C6IK1a0bFreW/32eCA5asKg+KQVi7teYqNA5LVO/Zhw/zjh2U+eN4rHZstPzjl%0A4SVPPAKkDkgLR2652Uduzw+WfPu9g3b/ZZE7rLps58x2J77cuX3rXoOHjX4mGRaD9OCOgzJD%0AzkjHLx27zaBdJxdfF5Cs3sFP7erGZ/JPS/PSjelj63hpl5RCenWP5Pds02reODAZXNfzHS5K%0ADji041no9mRz+GvxuAikJZsnx50Xj1d+Nhn/vOi6gGT1jkFadflemS2PO3GrQTckm6dPum78%0ACdckmBqX56upVa2JWuT+ksqGm6o5Whtsrvqm+Pan6S+sh9felA62/0dPxy8fkh5xd2F793Tz%0A0ngctfX4Y76eHrZFPJ6SjrdZWWxd7avdR9JjDVF9sLnWtgabqjabCzdXS12wqdZFjW/1ACn7%0AwDffk9ln8pooqv3izsmeow677MUnTvxRLj98qCrf/I2fwQZUx6TX9uC2Hxf+BmRFT0cuLBxw%0ARbrZVNic0MsP+HDhuIb8eGJh/Ldw66egdX3I3Q3SxF0yQ44uvKa7dVDy5cij26JoUfWz+eGz%0AZ+d7vlnVErXL/SWVCzdVe9QSbK625CGelF7aw5oLF/ngVT0d/3xBwfXpZmPhCeq0eCPK9vhj%0A9ivcrTE/vqwwfq3YunIBH2LUGmyu1p4fol0u4CWRDfgQo7YmDSmz5xWdz1V//VHy5Xtn5W/W%0AVD/UsXugv0eakV7aY2rmbZEMDun5Dvun5BYVNr+Z3nNWPC7yHmlSetiu8fjxFN9ni66L90hW%0A78h7pIc3fu66Znz+2euZ6ueAVPjU7oz40t57af6Kjz8V+NdFPd/h0R3yBwy5sWPzxb06P0Qo%0A+qld8gHDkKeS8VXxz9j5qaLrApJVuf7WbvnoK5ctOjl5jwSkpAfPPPH6N+LBI+cef1XR3/K8%0Acunx5z/Rtfn6NSeeNScdFv090rWf2ffY1wrjx847/oq/F18XkKzeEUgX7J2AyQ7/Sde+588a%0Afcwv1nZuAilE/GWD1bsO0j4/TL+eul+Pz1BAChGQrN51kLa6Pv163XuBtFFAshrQkIZemn6d%0ANBRIGwUkqwEN6WNfTL7kDtofSBsFJKsBDemKzGnromjd9zOXA2mjgGQ1oCG1HpIZut++QzOH%0AtgJpo4BkNaAhRa0/rxq29QFXtW3IB0hAMhvYkHoPSCECkhWQSgpIVkCyAlIpAckKSFZAKikg%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDog%0AWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQGpeHW1%0AqjVRi9xfUtlwUzVHa4PNVd8UbKraqC3cXG1rgk3VENUHm6uuNdhUtdlcuLla9BVcSuuixrdK%0AhtTSpmqPcnJ/SUXhpspG7cHmas8Gm6ot5OkKOFXQ0xXyIQa8JHIBH2KUbSkZEi/tQsRLO6v+%0A+NIOSCECkhWQSgpIVkCyAlIpAckKSFZAKikgWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJ%0ASDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJ%0ASDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJ%0ASDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJ%0ASDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJ%0ASDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJ%0ASDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJ%0ASDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJ%0ASDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJSDogWQEJ%0ASDogWQEJSDogWQGpezOr4xYCCUheQNoA0til+ZqABCQvIG0AaVz3bSCFCEhW/QLSqHFjzpwH%0AJCCZAal7Tz/wwqLJ1TPi4UNV+eb3cjzRAKq9c9SnT+0mjY9vFxyd7+k2VXuUk/tLKgo3VTZq%0ADzZXezbYVG0hT1fAqYKerpAPMeAlkQv4EKNsiwdpRnVbx5CXdiHipZ1Vf3hplz4jdX3iAKQQ%0AAcmqP0C6Zs7ihVdX3wUkIHkBqXs3njB6zBlzu7aBFCIgWfUHSBsGpBAByQpIJQUkKyBZAamU%0AgGQFJCsglRSQrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAE%0AJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAE%0AJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAE%0AJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAE%0AJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAE%0AJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAE%0AJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAE%0AJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAE%0AJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIAEJB2QrIBU%0AvNZ2WZTT+0spCjdVLsoGmysb8iEGnCvgVNlKPV0hL4mADzHKtvKMZMczkhXPSEDSAckKSEDS%0AAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDS%0AAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDS%0AAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDS%0AAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDS%0AAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDS%0AAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDS%0AAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDS%0AAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDS%0AAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSEDSAckKSBv1%0A/KiRQAKSGZA2bO13JgKppjyQVk0+eN9PfmKfwx8uckwB0p27Dd3usBV9X8Kbl39xv6P+0n1f%0AUUiPj9nvoEvf6HXeFRM//9FjF75dkF45ZJsth/+hxGkWjN3/oEn1fYT05mUH7Tfm8aKHeJBy%0A/3X7XUCqKQ+kYzNpm0/r+ZgU0k3JcR/s+xIOj48f0v2aLAbpj0PjO3yjt2lXHhQf9t7H3x5I%0AK94bzz7o3pJmmZs8gpF9hDQiOT/F/glmQrr93ByQ4soA6d5MRx98s8eDUkhbpsed3tcV/C49%0Afp9uO4tBqkrvcGsv805ODzv47YE0Op39n0ua5cD0zlP6dPDU9OCPFjvGgrRwfG1UgPTYiHx/%0AbZdFOb2/lKJwU+WibLC5siEfYt/m+mknpMxzPR6Uix/iysJhH+/rCs4q3OEf6+/M9ny66gel%0Ax5/ay7zHpIcNaQt6ujouiV3S2QeVMklD4RGc0qejf1g4P2uKHJM/Xa19hVQ77skISEnlhbS4%0Ax4M2DdJb6+8EUmehIT1ZPXLkyBHVI2/jpV0ZXtrd1+lop5U9HpS+tNsqPe7Mvq5gWnr8/t12%0AFntpV3hhNLWXea9JD/vy2/PS7sh09g+UNMsn0zvf3qeDb08Prip2jPPSrmlZvptHLlsDpHJ8%0A2HB8wdHmd/V8TArp18lxO/d9Cck1ObT7m+likOYm78JG9Tbtyi/Fh2375NsD6Y1tkyek+0ua%0A5ZHkEYzu44cNyYcxQ/9U7BD7F7J82BBXlo+/b/jqxz/3hY8dNbfIMYWPv3+/51bvO6r3T6c7%0AW3n1l6vGP9F9X9GPv5869oBDruz5ibGj1//n4AMnPPN2ffy97GvbDdv3kRKneeq4A77084Y+%0AQlp51Zerjnmy6CFAKil+IWvFL2SLB6QQAckKSCUFJCsgWQGplIBkBSQrIJUUkKyABCQdkKyA%0ABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyA%0ABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyA%0ABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyABCQdkKyAVEpvXTwjyDyhe+Di%0A18u9BFXu4lvLvQTZ/IufK/cSZNdeWe4VyF66eF7XRhhIr1ZdEGSe0F1aVZFXRrbquHIvQXZb%0A1QPlXoJsxFfKvQLZ3KpfdW0AqQwByQtI5Q5IVkCyAlK5A5LXwIFENMADElGAgEQUICARBWhT%0AIS255LvVVyejBaceftxtuU1fUZA6lzWzOm5hudfT0ezzjz7iBw/Go4o6XZ3LqrDTNfeMMYdP%0A+E1rVGGnq2tdXYpZLxwAAAO+SURBVOdrUyE9fcsfT0iu2BdG/nLZnNFTNn2RQepc1syxS/M1%0AlXs9HZ0zdcFzN1XPqrTT1bmsCjtdf75/0Qszj7im0k5X17q6zleAl3anJlfsJSfnb6Ye0bzp%0A8wUqXdbMceVex8ade14Fnq50WZV4uq49sSJPV7KurvMVDNK4+DP1xdWLN32+QBUgjRo35sx5%0AvR37znbGZRV4utJlVd7pyi6dcF0lnq50XV3nKxSkXPWd+ds3qivnf4QU0tMPvLBocnVF/Unt%0A7FEvVuDpSpZVcaerdeSI6sntlXe6Cuta73z1d0hJk8aXbxkbNXf0nyrxdCXLSqug05Vb9tKs%0AsbdW3ukqrCstOV/9/aVd0ozqtjIupHuzRj8Wf6m001VYVlIlna58949YV3GnKy5eV1Jyvvr7%0Ahw1JkyrnLfRvj0g/W66w09WxrKQKOl1xM6tXV9rpSorXlZScr02F1LJ06fcuWfpy+gHlQxXz%0AAWXnsq6Zs3jh1dV3lXs9Hd04atbSpUv/Xmmnq3NZFXa6bnh48bN3HTmx0k5X17q6ztemQlqa%0A/EZqZH70+KmHHTu1Un5l1rmsG08YPeaMueVeTmdjk3VNiCrsdHUuq8JO160nf/PIU6bHz0MV%0Adbq61tV1vvgTIaIAAYkoQEAiChCQiAIEJKIAAYkoQEAiChCQiAIEJKIAAYkoQEAiChCQKr/p%0Ambuv/bctht8RvTRy263HrE72/PbcXTbfI/2PNKz49rZbHfTo6C3Ku8iBHpAqv+mZz+x24SU7%0AD75zh3FXjs2MTfbsOGLB82dnfpwfr9198Ek3nrL1R4BU1oBU+U3P7LI2ip7JDLo+vzFycE28%0AZ9f4/3t31OCXouiCzI354W8yQCprQKr8pmcmxV+2H5bN3/4i81i8Z2K8Z07mZ1G07/vb88Pc%0ATkAqa0Cq/KZnpsdf9tw7vp2SmRnvmRqPX8l8L4q2+lRy0CFAKmtAqvymZ+6Ov+y5f3w7JXNP%0AvOfmePxC5qQ8pE8nBwGpvAGp8lOQTo/Hd6z30m5nIJU1IFV+CtK2b0RR66cHvRhF52fif8PO%0AVD5sKG9AqvwUpKoPXXL1pzJn5nes2XWz/7zp+1t/ZEhZ1zjgA1LlpyDdedlum+9+RfJvA1k+%0AZpstPzfv0O3KuUQC0ruxAq312/Wj5VgIdQSkd2PdICX/EZbfZc4u12IoDkjvxrpBOvg71900%0AYbMdV5VvOQSkd2fdIF22/zb/tON3XivfaigCElGQgEQUICARBQhIRAECElGAgEQUICARBQhI%0ARAH6fx4XnYnFPjTRAAAAAElFTkSuQmCC" width="420" height="420">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="KonradUdoHannes/fastpages_tryout"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/fastpages_tryout/first%20steps/r/jupyter/2021/02/18/R_in_jupyter.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/fastpages_tryout/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/fastpages_tryout/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/fastpages_tryout/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Trying out fastpages, which seems like a cool tool.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" title="fastai"><svg class="svg-icon grey"><use xlink:href="/fastpages_tryout/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/fastpages_tryout/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
