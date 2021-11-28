@@ -150,7 +150,11 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#Simple-interpretation">Simple interpretation </a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#Application-to-German-data">Application to German data </a></li>
+<li class="toc-entry toc-h2"><a href="#Application-to-German-data">Application to German data </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Plots-of-the-breakthrough/efficiency-relationship">Plots of the breakthrough/efficiency relationship </a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#Summary">Summary </a></li>
 </ul><!--
 #################################################
@@ -237,9 +241,9 @@ $$e = 1 -  \frac {(1-q)b} {(1-b)q} $$
 <p></p>
 <div class="flash flash-error">
     <svg class="octicon octicon-alert octicon octicon-alert octicon octicon-alert" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg>
-    <strong>Warning: </strong>This is not a not a sophisticated epidemiological model but simply serves to illustrated the relationship to Bayes theorem (which will also be important for more realistic models). This model should only be used to build some rough intuition about the relationship but by itself is not sufficient for decision making. Among the limitations are:
-</div>&gt;
-<blockquote>
+    <strong>Warning: </strong>This is not a not a sophisticated epidemiological model but simply serves to illustrated the relationship to Bayes theorem (which will also be important for more realistic models). This model should only be used to build some rough intuition about the relationship but by itself is not sufficient for decision making.
+</div>
+Some limitations of the presented model for the presented model:
 <ul>
 <li>unreported cases of infections and breakthroughs</li>
 <li>fraudulent vaccinations</li>
@@ -247,7 +251,6 @@ $$e = 1 -  \frac {(1-q)b} {(1-b)q} $$
 <li>different virus variants throughout time</li>
 <li>...</li>
 </ul>
-</blockquote>
 
 </div>
 </div>
@@ -375,12 +378,17 @@ $$e = 1 -  \frac {(1-q)b} {(1-b)q} $$
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rki_data</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"ffill"</span><span class="p">)</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
-    <span class="n">average_vaccine_effectiveness_pct</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">avg_vaccine_efficiency</span><span class="p">(</span>
-        <span class="n">df</span><span class="p">[</span><span class="s2">"percentage of the population that is fully vaccinated"</span><span class="p">],</span>
-        <span class="n">df</span><span class="p">[</span><span class="s2">"percentage breakthrough infections"</span><span class="p">],</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span>
+    <span class="n">rki_data</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">"ffill"</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+        <span class="n">average_vaccine_effectiveness_pct</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">avg_vaccine_efficiency</span><span class="p">(</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">"percentage of the population that is fully vaccinated"</span><span class="p">],</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">"percentage breakthrough infections"</span><span class="p">],</span>
+        <span class="p">)</span>
     <span class="p">)</span>
-<span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">T</span>
+<span class="p">)</span>
 </pre></div>
 
     </div>
@@ -429,30 +437,30 @@ $$e = 1 -  \frac {(1-q)b} {(1-b)q} $$
   <tbody>
     <tr>
       <th>percentage breakthrough infections</th>
-      <td>1.500000</td>
-      <td>4.200000</td>
-      <td>12.400000</td>
-      <td>39.700000</td>
-      <td>18.900000</td>
-      <td>60.500000</td>
+      <td>1.5</td>
+      <td>4.2</td>
+      <td>12.4</td>
+      <td>39.7</td>
+      <td>18.9</td>
+      <td>60.5</td>
     </tr>
     <tr>
       <th>percentage of the population that is fully vaccinated</th>
-      <td>38.700000</td>
-      <td>38.700000</td>
-      <td>71.900000</td>
-      <td>71.900000</td>
-      <td>84.900000</td>
-      <td>84.900000</td>
+      <td>38.7</td>
+      <td>38.7</td>
+      <td>71.9</td>
+      <td>71.9</td>
+      <td>84.9</td>
+      <td>84.9</td>
     </tr>
     <tr>
       <th>average_vaccine_effectiveness_pct</th>
-      <td>97.587849</td>
-      <td>93.055623</td>
-      <td>94.467836</td>
-      <td>74.269358</td>
-      <td>95.855137</td>
-      <td>72.758718</td>
+      <td>97.6</td>
+      <td>93.1</td>
+      <td>94.5</td>
+      <td>74.3</td>
+      <td>95.9</td>
+      <td>72.8</td>
     </tr>
   </tbody>
 </table>
@@ -473,6 +481,15 @@ $$e = 1 -  \frac {(1-q)b} {(1-b)q} $$
 <p>One can see that when vaccinated population is high, a larger number of breakthrough infections does not contradict a larger efficiency. The reason why many people don't find this intuitive is that non-linear relationships are not very intuitive in general. As such it helps to visualize the relationship.</p>
 <p>The next graphic shows the dependency between the percentage of breakthrough infections and the effectiveness of the vaccination for various overall percentages of vaccination.</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Plots-of-the-breakthrough/efficiency-relationship">
+<a class="anchor" href="#Plots-of-the-breakthrough/efficiency-relationship" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plots of the breakthrough/efficiency relationship<a class="anchor-link" href="#Plots-of-the-breakthrough/efficiency-relationship"> </a>
+</h3>
 </div>
 </div>
 </div>
@@ -550,7 +567,7 @@ $$e = 1 -  \frac {(1-q)b} {(1-b)q} $$
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can clearly see that the relationship become very non-linear the higher the percentage of vaccinated people.</p>
+<p>We can clearly see that the relationship become very non-linear the higher the percentage of vaccinated people. The as explained in our earlier interpretation the vaccination rate can easily be identified by looking where a particular curve crosses 0.</p>
 
 </div>
 </div>
